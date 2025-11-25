@@ -18,6 +18,8 @@ export default function PhotosScreen({ onNext }) {
     "/images/3.jpeg",
     "/images/4.jpeg",
     "/images/6.jpeg",
+    "/images/16.jpeg",
+    "/images/17.jpeg",
     "/images/15.jpeg",
     "/images/14.jpeg",
     "/images/5.jpg",
