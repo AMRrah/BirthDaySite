@@ -13,7 +13,7 @@ export default function IntroScreen({ onNext }) {
   const [isLoading, setIsLoading] = useState(true);
   const [bubbles, setBubbles] = useState([]);
   const [showForYouBtn, setShowForYouBtn] = useState(false);
-  const birthdayDate = new Date("december 01, 2025"); // Change this date accordingly
+  const birthdayDate = new Date("november 01, 2025"); // Change this date accordingly
   const audioRef = useRef(null);
 
   // For testing
