@@ -13,6 +13,7 @@ const confettiColors = ["#FF3CAC", "#F687B3", "#D8B4FE", "#C084FC", "#F472B6"];
 export default function CakeScreen({ onNext, onDecorate }) {
   const [decorated, setDecorated] = useState(false)
   const [lit, setLit] = useState(false)
+   const audioRef = useRef(null);{/*new added*/}
 
   const decorate = () => {
     if (decorated) return
@@ -38,6 +39,14 @@ export default function CakeScreen({ onNext, onDecorate }) {
     })
   }
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5; // volume 0–1
+      audioRef.current.play().catch(() => {
+        console.log("User interaction needed to play audio");
+      });
+    }
+  }, []);{/*new added*/}
   return (
     <div className="px-4 md:px-6 py-10 text-center relative">
       {lit && (
@@ -50,8 +59,9 @@ export default function CakeScreen({ onNext, onDecorate }) {
           Happy Birthday, Cutiepie!
         </motion.div>
       )}
-<Confetti />
-        <FloatingHearts />
+<Confetti />{/*new added*/}
+        <FloatingHearts />{/*new added*/}
+       <audio ref={audioRef} src="/images/birthday.mp3" preload="auto" loop />{/*new added*/}
       <div className="relative flex flex-col items-center gap-8 mt-52">
         <div className="relative mb-6">
           <Cake lit={lit} />
