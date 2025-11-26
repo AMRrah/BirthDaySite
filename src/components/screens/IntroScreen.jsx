@@ -5,6 +5,8 @@ import { Gift } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Count from "./Count";
 import { useState, useEffect, useRef } from "react";
+import FloatingHearts from "./FloadingHeart";{/* new added*/}
+import Confetti from "./Confetti";{/* new added*/}
 
 export default function IntroScreen({ onNext }) {
   const [isBirthday, setIsBirthday] = useState(false);
@@ -61,7 +63,8 @@ export default function IntroScreen({ onNext }) {
           alt="Cute birthday animation topper"
           className="w-[140px] md:w-[180px]  object-cover"
         />
-
+<Confetti /> {/* new added*/}
+        <FloatingHearts />{/* new added*/}
         <div>
           <h1
             className="text-pretty text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 drop-shadow leading-tight"
