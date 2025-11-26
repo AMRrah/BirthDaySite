@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "framer-motion"
 import confetti from "canvas-confetti"
 import GradientButton from "../GradientButton"
 import { ArrowRight, Flame, WandSparkles } from "lucide-react"
+import FloatingHearts from "./FloadingHeart";
+import Confetti from "./Confetti";
 
 const confettiColors = ["#FF3CAC", "#F687B3", "#D8B4FE", "#C084FC", "#F472B6"];
 
@@ -48,7 +50,8 @@ export default function CakeScreen({ onNext, onDecorate }) {
           Happy Birthday, Cutiepie!
         </motion.div>
       )}
-
+<Confetti />
+        <FloatingHearts />
       <div className="relative flex flex-col items-center gap-8 mt-52">
         <div className="relative mb-6">
           <Cake lit={lit} />
