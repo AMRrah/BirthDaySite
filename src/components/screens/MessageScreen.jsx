@@ -4,9 +4,22 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import GradientButton from "../GradientButton";
 import { ArrowRight } from "lucide-react";
+import FloatingHearts from "./FloadingHeart";{/* new added*/}
+import Confetti from "./Confetti";{/* new added*/}
 
 export default function MessageScreen({ onNext }) {
   const [flipped, setFlipped] = useState(false);
+
+  const audioRef = useRef(null);{/* new added*/}
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5; // volume 0–1
+      audioRef.current.play().catch(() => {
+        console.log("User interaction needed to play audio");
+      });
+    }
+  }, []);{/* new added*/}
+
 
   return (
     <>
@@ -18,6 +31,10 @@ export default function MessageScreen({ onNext }) {
           className="text-3xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-fuchsia-400 to-purple-400 drop-shadow mb-6 leading-tight">
           A Special Message
         </motion.h2>
+    <Confetti />
+        <FloatingHearts />
+        {/* new added*/}
+                <audio ref={audioRef} src="/images/ehsaas.mp3" preload="auto" loop />{/* new added*/}
 
         <div className="mx-auto relative w-full max-w-3xl flex justify-center">
           <motion.div
