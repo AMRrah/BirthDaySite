@@ -8,9 +8,12 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import { Mail } from "lucide-react";
 import GradientButton from "../GradientButton";
+import FloatingHearts from "./FloadingHeart";{/* new added*/}
+import Confetti from "./Confetti";{/* new added*/}
 
 export default function PhotosScreen({ onNext }) {
   const swiperRef = useRef(null);
+  const audioRef = useRef(null);
 
   const photos = [
     "/images/1.jpeg",
@@ -31,6 +34,14 @@ export default function PhotosScreen({ onNext }) {
     "/images/12.jpeg",
     "/images/13.jpeg",
   ];
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5; // volume 0–1
+      audioRef.current.play().catch(() => {
+        console.log("User interaction needed to play audio");
+      });
+    }
+  }, []);
 
   return (
     <div className="px-4 md:px-6 py-10">
@@ -44,7 +55,15 @@ export default function PhotosScreen({ onNext }) {
         </motion.h2>
         <p className="text-sm text-rose-100/90 mt-1">(Swipe the cards)</p>
       </div>
-
+<Confetti />{/* new added*/}
+        <FloatingHearts />
+        {/* new added*/}
+      <audio
+        ref={audioRef}
+        src="/images/tu hai toh mai hoon.mp3"
+        preload="auto"
+        loop
+      />{/* new added*/}
       <div className="relative flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
