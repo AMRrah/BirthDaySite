@@ -19,42 +19,51 @@ export default function IntroScreen({ onNext }) {
   // For testing
   // const birthdayDate = new Date("2025-04-23T22:03:00+05:30")
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 1500);
+  // }, []);
 
-  const startCelebration = () => {
-    setShowForYouBtn(false);
-    console.log(setIsBirthday(true));
-    // Play the song
+  // const startCelebration = () => {
+  //   setShowForYouBtn(false);
+  //   console.log(setIsBirthday(true));
+  //   // Play the song
+  //   if (audioRef.current) {
+  //     audioRef.current.volume = 0.8;
+  //     audioRef.current.play().catch((e) => {
+  //       console.log("Autoplay prevented, user interaction needed", e);
+  //     });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const generated = Array.from({ length: 20 }).map(() => ({
+  //     left: `${Math.random() * 100}%`,
+  //     top: `${Math.random() * 100}%`,
+  //     color: [
+  //       "bg-pink-300",
+  //       "bg-purple-300",
+  //       "bg-yellow-300",
+  //       "bg-violet-300",
+  //       "bg-rose-300",
+  //     ][Math.floor(Math.random() * 3)],
+  //     size: 16 + Math.floor(Math.random() * 8),
+  //     duration: 3 + Math.random() * 2,
+  //     delay: Math.random() * 5,
+  //   }));
+  //   setBubbles(generated);
+  // }, []);
+
+   useEffect(() => {  {/* new added*/}
     if (audioRef.current) {
-      audioRef.current.volume = 0.8;
-      audioRef.current.play().catch((e) => {
-        console.log("Autoplay prevented, user interaction needed", e);
+      audioRef.current.volume = 0.5; // volume 0–1
+      audioRef.current.play().catch(() => {
+        console.log("User interaction needed to play audio");
       });
     }
-  };
-
-  useEffect(() => {
-    const generated = Array.from({ length: 20 }).map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      color: [
-        "bg-pink-300",
-        "bg-purple-300",
-        "bg-yellow-300",
-        "bg-violet-300",
-        "bg-rose-300",
-      ][Math.floor(Math.random() * 3)],
-      size: 16 + Math.floor(Math.random() * 8),
-      duration: 3 + Math.random() * 2,
-      delay: Math.random() * 5,
-    }));
-    setBubbles(generated);
-  }, []);
-
+  }, []);{/* new added*/}
+  
   return (
     <div className="py-10 md:py-14 text-center">
       <div className="flex flex-col items-center gap-6">
@@ -65,6 +74,9 @@ export default function IntroScreen({ onNext }) {
         />
 <Confetti /> {/* new added*/}
         <FloatingHearts />{/* new added*/}
+        {/* You can change the background song if you want */}
+        <audio ref={audioRef} src="/images/birthday.mp3" preload="auto" loop />
+
         <div>
           <h1
             className="text-pretty text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 drop-shadow leading-tight"
@@ -106,7 +118,7 @@ export default function IntroScreen({ onNext }) {
               }
             }}>
             <Gift size={20} />
-            <span onClick={startCelebration}>Start the surprise</span>
+            Start the surprise
           </GradientButton>
 
           {/* <div className="mt-8">
