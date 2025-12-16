@@ -44,7 +44,7 @@ export default function MessageScreen({ onNext }) {
             className=" h-auto max-w-xl bg-gradient-to-br from-pink-200 via-pink-100 to-pink-50 rounded-2xl shadow-lg p-4 md:p-6 text-center">
             <p className="text-[#301733] text-base md:text-lg leading-relaxed overflow-y-auto max-h-[400px] pr-2">
               <h1>
-                <b>Happy Birthday💕🍰 Rafiya❤️Anjum 😘</b>
+                <b>Happy Birthday💕🍰 name❤️ nickname😘</b>
                 {/* <b>Happy Birthday💕🍰 Meri Jaan❤️ 😘</b> */}
               </h1>
               Happy Birthday, Meri Jaan! You deserve all the happiness, love,
